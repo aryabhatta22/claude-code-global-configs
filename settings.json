@@ -1,0 +1,18 @@
+{
+  "autoUpdatesChannel": "latest",
+  "effortLevel": "medium",
+  "model": "opusplan",
+  "hooks": {
+    "PreCompact": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 -c \"import json; print(json.dumps({'systemMessage': 'PreCompact triggered. Run /update-tracker if tasks were completed this session.', 'additionalContext': 'About to compact. Preserve any task status changes and decisions made this session in the summary.'}))\"",
+            "timeout": 10
+          }
+        ]
+      }
+    ]
+  }
+}

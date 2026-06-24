@@ -1,0 +1,33 @@
+# Auth and secrets — never commit
+.credentials.*
+mcp-needs-auth-cache.*
+*.token
+*.key
+secrets/
+
+# Runtime and ephemeral — machine-specific, not portable
+backups/
+cache/
+daemon/
+downloads/
+file-history/
+ide/
+plans/
+projects/
+session-env/
+sessions/
+shell-snapshots/
+.last-cleanup
+*.log
+
+# Reinstallable — document in README instead
+plugins/
+
+# Version these explicitly
+!CLAUDE.md
+!settings.json
+!skills/
+!hooks/
+!agents/
+!.gitignore
+!Readme.md
