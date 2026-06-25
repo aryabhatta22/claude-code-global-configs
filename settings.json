@@ -1,6 +1,4 @@
 {
-  "autoUpdatesChannel": "latest",
-  "effortLevel": "medium",
   "model": "opusplan",
   "hooks": {
     "PreCompact": [
@@ -14,5 +12,20 @@
         ]
       }
     ]
-  }
+  },
+  "enabledPlugins": {
+    "security-guidance@claude-plugins-official": true,
+    "context7@claude-plugins-official": true
+  },
+  "extraKnownMarketplaces": {
+    "context7-marketplace": {
+      "source": {
+        "source": "git",
+        "url": "https://github.com/upstash/context7.git"
+      }
+    }
+  },
+  "effortLevel": "medium",
+  "autoUpdatesChannel": "latest",
+  "tui": "fullscreen"
 }
