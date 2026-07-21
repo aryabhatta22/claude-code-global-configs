@@ -2,9 +2,8 @@
 name: project-setup
 description: >
   Sets up a new fullstack project from scratch. Invoke manually with
-  /project-setup when starting a new repo. Do not auto-trigger.
+  /project-setup when starting a new repo.
 disable-model-invocation: true
-user-invocable: true
 ---
 
 # Project Setup
@@ -27,13 +26,23 @@ Confirm choices, then begin.
 - `git init` at root
 - `.gitignore` covering: `.env`, `__pycache__/`, `.venv/`, `node_modules/`,
   `logs/`, `.codegraph/`, `*.pyc`, `dist/`, `.DS_Store`
-- `.claudeignore` — same as `.gitignore` plus any large data folders
 - `README.md` — project name and one-line description only
 - `.env.example` — placeholder keys, no real values
 
 ---
 
-## Step 3 — Backend scaffold
+## Step 3 — Scaffold
+
+**Fallback rule — applies to any confirmed stack WITHOUT a section below**
+(Node/Express, Go/Gin, Vue, PostgreSQL, or anything added to the menu later):
+
+1. Propose a minimal scaffold plan before running anything: init command,
+   a single health-check entrypoint, and a directory layout mirroring the
+   patterns in this file (config/, api/, db/ with .gitkeep).
+2. Show the exact commands you intend to run.
+3. Get explicit confirmation, then execute. Never improvise silently.
+4. Note in the final summary that this stack used the fallback path, so the
+   user can decide whether to promote it to a dedicated section.
 
 ### Python / FastAPI
 
@@ -42,6 +51,8 @@ cd backend
 uv init .
 uv add fastapi "uvicorn[standard]"
 ```
+
+If `uv` is not installed, stop and tell the user before proceeding.
 
 Then create:
 - `backend/main.py` — single `/health` endpoint returning `{"status": "ok"}`
@@ -77,15 +88,29 @@ Same styling question as above.
 
 ## Step 4 — Claude Code configuration
 
-Create `.claude/settings.json` at project root:
+Create `.claude/settings.json` at project root. These deny rules are the
+enforced replacement for a context-exclusion file (Claude Code has no native
+`.claudeignore`):
 
 ```json
 {
-  "model": "opusplan"
+  "permissions": {
+    "deny": [
+      "Read(./.env)",
+      "Read(./.env.*)",
+      "Read(./**/secrets/**)",
+      "Bash(git push --force*)",
+      "Bash(git push -f*)"
+    ]
+  }
 }
 ```
 
-Create `.claude/CLAUDE.md` at project root with these sections:
+Do NOT set a `model` key here — model preference lives in
+`~/.claude/settings.json` so it isn't forced on anyone else who clones the repo.
+
+Create `CLAUDE.md` at project root, filled in with the actual confirmed values
+(no bracket placeholders left behind):
 
 ```
 # [Project Name]
@@ -112,13 +137,13 @@ Create `.claude/CLAUDE.md` at project root with these sections:
 
 ## Step 5 — CodeGraph
 
-```bash
-codegraph init
-```
+Check first: `command -v codegraph`.
 
-Creates `.codegraph/` and builds the full symbol graph in one step.
-File watcher maintains it automatically. No further manual steps needed.
-Confirm `.codegraph/` is in `.gitignore`.
+- If installed: run `codegraph init`. Creates `.codegraph/` and builds the full
+  symbol graph; the file watcher maintains it automatically. Confirm
+  `.codegraph/` is in `.gitignore`.
+- If NOT installed: skip this step, note it in the final summary, and do not
+  attempt to install it without asking.
 
 ---
 
@@ -142,6 +167,8 @@ Write `dev` script in root `package.json`:
 
 Then:
 
-1. Start each server independently and confirm no errors
+1. Start each server independently and confirm no errors. If a server fails to
+   start, report the error and stop — do not commit a broken scaffold.
 2. Initial commit: `git add -A && git commit -m "Initial scaffold"`
-3. Print summary: what was created, how to run, what is next
+3. Print summary: what was created, how to run, what was skipped (if anything),
+   and what is next

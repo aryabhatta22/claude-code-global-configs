@@ -1,4 +1,23 @@
 {
+  "cleanupPeriodDays": 30,
+  "permissions": {
+    "allow": [
+      "Bash(git status)",
+      "Bash(git diff*)",
+      "Bash(git log*)",
+      "Bash(uv run pytest*)",
+      "Bash(uv run ruff*)",
+      "Bash(npm run test*)",
+      "Bash(npm run lint*)"
+    ],
+    "deny": [
+      "Read(./.env)",
+      "Read(./.env.*)",
+      "Read(./**/secrets/**)",
+      "Bash(git push --force*)",
+      "Bash(git push -f*)"
+    ]
+  },
   "model": "opusplan",
   "hooks": {
     "PreCompact": [
@@ -11,17 +30,31 @@
           }
         ]
       }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "Edit|Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash -c 'f=\"$CLAUDE_FILE_PATH\"; case \"$f\" in *.py) command -v ruff >/dev/null && ruff format \"$f\" --quiet ;; esac; exit 0'",
+            "timeout": 15
+          }
+        ]
+      }
     ]
   },
   "enabledPlugins": {
     "security-guidance@claude-plugins-official": true,
-    "context7@claude-plugins-official": true
+    "context7@claude-plugins-official": true,
+    "superpowers@superpowers-marketplace": false,
+    "claude-code-setup@claude-plugins-official": true
   },
   "extraKnownMarketplaces": {
-    "context7-marketplace": {
+    "superpowers-marketplace": {
       "source": {
-        "source": "git",
-        "url": "https://github.com/upstash/context7.git"
+        "source": "github",
+        "repo": "obra/superpowers-marketplace"
       }
     }
   },

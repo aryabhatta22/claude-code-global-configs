@@ -1,8 +1,8 @@
 ---
 name: update-tracker
-description: Updates project tracking files at end of session. Use when session tasks are complete.
-user-invocable: true
-disable-model-invocation: false
+description: Updates project tracking files (TRACKER.md, PLAN.md, etc.) at end of session with evidence-verified statuses and a session log entry.
+disable-model-invocation: true
+context: fork
 ---
 You are updating the progress tracking files for this project. Follow these steps in order.
 
@@ -10,8 +10,8 @@ You are updating the progress tracking files for this project. Follow these step
 Look for files matching these patterns in priority order:
 - TRACKER.md, tracker.md, TASKS.md
 - PLAN.md, PLANNING.md, ROADMAP.md, ARCHITECTURE.md
-If none found, tell the user which files you looked for and ask them to confirm the correct names.
-Do not proceed until you have identified at least one tracking file.
+If none found, STOP. Report which files you looked for and ask the user to
+confirm the correct names. Do not modify anything.
 
 **Step 2 — Read and understand structure**
 Read each file you found. Do not assume a structure — learn it from the file.
@@ -37,5 +37,6 @@ If any architecture or scope decisions changed this session, append one row to t
 changes table (or equivalent section). If nothing changed, do not touch this section.
 
 **Step 7 — Confirm**
-Tell the user which files were updated, which task statuses changed, and what was
-appended to the session log. If you could not determine something, say so explicitly.
+Report: which files were updated, which task statuses changed (with the evidence
+used), and what was appended to the session log. If you could not determine
+something, say so explicitly.
