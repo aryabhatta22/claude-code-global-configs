@@ -13,6 +13,7 @@ state and is intentionally gitignored — see `.gitignore` for the exact list.
 - `skills/` — custom skills (below).
 - `hooks/`, `agents/` — reserved for future custom hooks/agents (empty for now).
 - `Readme.md` — this file: how to restore the setup on a new machine.
+- `.gitignore` — the allowlist that decides everything above.
 
 Plugins themselves are **not** committed (reinstallable, machine-specific) — install
 them fresh per the steps below.
@@ -54,8 +55,10 @@ automatically, add it explicitly first:
 while on. Enable it with `/plugin` only when starting feature-heavy work, and disable
 it again afterward. Don't run `grill-me` on top of it (redundant).
 
-`claude-in-chrome` (browser automation / live page inspection) is used but managed
-outside this repo's plugin list — install separately if missing.
+`claude-in-chrome` (browser automation / live page inspection) is a separate Chrome
+extension / companion install, not a `/plugin` from this repo's marketplaces — it
+doesn't appear in `settings.json` at all, so there's no restore step to run here;
+just reinstall the extension itself if it's missing.
 
 ## Skills (`skills/`)
 
