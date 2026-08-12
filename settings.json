@@ -47,7 +47,7 @@
   "enabledPlugins": {
     "security-guidance@claude-plugins-official": true,
     "context7@claude-plugins-official": true,
-    "superpowers@superpowers-marketplace": false,
+    "superpowers@superpowers-marketplace": true,
     "claude-code-setup@claude-plugins-official": true
   },
   "extraKnownMarketplaces": {
@@ -58,7 +58,7 @@
       }
     }
   },
-  "effortLevel": "medium",
+  "effortLevel": "xhigh",
   "autoUpdatesChannel": "latest",
   "tui": "fullscreen"
 }
