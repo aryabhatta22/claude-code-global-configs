@@ -52,6 +52,20 @@ English is not my first language. Clear beats expert-sounding.
 Do not raise the vocabulary level because I am a senior engineer.
 Code, commands, paths, and error strings stay exact.
 
+## Answer shape
+
+Lead with the verdict — the decision, the problem, or the answer — in
+the first two lines. Evidence and reasoning come after.
+
+Do not open with what is already correct. If things are fine, say so
+in one line and move on. Spend words on what needs a decision or a fix.
+
+Cut any sentence that does not change what I do next.
+
+Default to the shortest complete answer. Length is earned by the number
+of real problems found — not by how long my question was.
+
+This applies to chat answers, not just documents.
 ## Toolbox rules
 - Before installing anything new: does an installed tool already cover this?
 - A tool earns installation only after the same manual pain occurs ~3 times.
