@@ -31,3 +31,4 @@ plugins/
 !agents/
 !.gitignore
 !Readme.md
+!output-styles/

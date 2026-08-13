@@ -129,6 +129,9 @@ Create `CLAUDE.md` at project root, filled in with the actual confirmed values
 - Lint: [command]
 
 ## Structure
+Write every line in this file in plain English. A developer who has
+never seen this repo should understand what each folder does from
+one reading.
 - [key folder]: [what lives here]
 - [key folder]: [what lives here]
 ```

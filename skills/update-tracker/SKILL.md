@@ -31,6 +31,8 @@ you cannot verify. Do not rewrite or reformat content you are not changing.
 If the tracker has a session log section, append one row with today's date,
 a one-line summary of what was done this session, any current blockers, and
 what should happen in the next session. Do not modify existing log rows.
+Write log entries in plain English. One short sentence each.
+No jargon unless the jargon is the thing being tracked.
 
 **Step 6 — Record scope changes**
 If any architecture or scope decisions changed this session, append one row to the
