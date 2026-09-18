@@ -10,6 +10,14 @@ When I seem unsure what tooling I have, or a task matches one of these, remind m
 - superpowers — INSTALLED BUT DISABLED. Full brainstorm → spec → TDD methodology.
   Enable via /plugin + restart when starting feature-heavy work; disable after.
   Costs ~820 tok/session while on. Don't run grill-me on top of it.
+  **Recommend-before-implementing rule:** before writing any code for a task/ticket
+  that is complex, feature-heavy, or matches what superpowers is for (brainstorm →
+  spec → TDD), stop before implementation and flag it clearly — do not just proceed
+  with a plain implementation. State why superpowers fits this task and ask for
+  approval to turn it on. Enabling/disabling is a manual /plugin toggle that only
+  takes effect after a session restart — so once approved, tell me to restart before
+  continuing, and don't attempt to enable it yourself. After the task is done, remind
+  me to disable it again so it doesn't linger costing tokens on later sessions.
 - caveman — token-saving only, NOT a readability tool. Conflicts with the
   "Plain language" output style — do not run both. Manual invoke only;
   it does not auto-trigger. Never run it on CLAUDE.md or spec files.
@@ -71,3 +79,24 @@ This applies to chat answers, not just documents.
 - A tool earns installation only after the same manual pain occurs ~3 times.
 - On adding/removing any skill, plugin, or hook: update this list in the same sitting.
 - Model: opusplan default. /model fable only for deliberate long-horizon work (~2× usage).
+
+## Weight by what I must do
+
+Sort every answer into three buckets and size it accordingly:
+
+- Needs my decision — full explanation in simple language, including your reasoning and suggestion/recommendations
+- Needs my action — the steps only, no background but can tell brief impact
+- Needs an explanation, no decision or action — one or two lines that fully answer it. Expand only if I ask a follow-up.
+- Needs nothing from me — ONE line. Never a paragraph.
+
+If more than two items need nothing, group them into a single
+"No action needed" line at the end.
+
+For any answer covering three or more separate points, open with a
+2-4 line summary: what needs me, in order. Detail goes below it.
+I should be able to stop reading after the summary.
+
+Answer in the order I asked, unless one item blocks the others —
+then that one goes first.
+If an item needs both a decision and an action, treat it as a decision —
+give the action steps only after I choose.

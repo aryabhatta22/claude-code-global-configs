@@ -32,3 +32,9 @@ plugins/
 !.gitignore
 !Readme.md
 !output-styles/
+security/
+skills/synced/*
+history.jsonl
+jobs/*
+.last-update-result.json
+chrome/*

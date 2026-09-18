@@ -1,5 +1,8 @@
 {
   "cleanupPeriodDays": 30,
+  "env": {
+    "CLAUDE_CODE_SUBAGENT_MODEL": "sonnet"
+  },
   "permissions": {
     "allow": [
       "Bash(git status)",
@@ -18,7 +21,6 @@
       "Bash(git push -f*)"
     ]
   },
-  "model": "opusplan",
   "hooks": {
     "PreCompact": [
       {
@@ -47,8 +49,10 @@
   "enabledPlugins": {
     "security-guidance@claude-plugins-official": true,
     "context7@claude-plugins-official": true,
-    "superpowers@superpowers-marketplace": true,
-    "claude-code-setup@claude-plugins-official": true
+    "superpowers@superpowers-marketplace": false,
+    "claude-code-setup@claude-plugins-official": false,
+    "claude-md-management@claude-plugins-official": true,
+    "frontend-design@claude-plugins-official": true
   },
   "extraKnownMarketplaces": {
     "superpowers-marketplace": {
@@ -59,7 +63,8 @@
     }
   },
   "outputStyle": "Plain language",
-  "effortLevel": "xhigh",
   "autoUpdatesChannel": "latest",
-  "tui": "fullscreen"
+  "tui": "fullscreen",
+  "agentPushNotifEnabled": true,
+  "inputNeededNotifEnabled": true
 }

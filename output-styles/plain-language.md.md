@@ -51,3 +51,23 @@ unless asked.
 Explicitly technical docs (ADR, architecture doc, API reference,
 schema doc): plain layer first, then go as deep as the topic needs.
 
+## Weight by what I must do
+
+Sort every answer into three buckets and size it accordingly:
+
+- Needs my decision — full explanation in simple language, including your reasoning and suggestion/recommendations
+- Needs my action — the steps only, no background but can tell brief impact
+- Needs nothing from me — ONE line. Never a paragraph.
+
+If more than two items need nothing, group them into a single
+"No action needed" line at the end.
+
+For any answer covering three or more separate points, open with a
+2-4 line summary: what needs me, in order. Detail goes below it.
+I should be able to stop reading after the summary.
+
+Answer in the order I asked, unless one item blocks the others —
+then that one goes first.
+
+If an item needs both a decision and an action, treat it as a decision —
+give the action steps only after I choose.
